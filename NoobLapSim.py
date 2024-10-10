@@ -11,8 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as interp
 
-os.chdir('C:/Users/admin/Desktop/GitHub/OpenLapSim-Reference/OpenLapSim-master/src')
-
+os.chdir('C:/Users/admin/Desktop/GitHub/BarelyOptimalLapSim')
 #%% 
 setupFile = open("setupFiles/SetupFile.json")
 
