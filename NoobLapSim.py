@@ -11,8 +11,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as interp
 
+from setup.createTrack import createTrack
+
 os.chdir('C:/Users/admin/Desktop/GitHub/BarelyOptimalLapSim')
-#%% 
+
+#%% Load Track
+
+trackFile = "trackFiles/TrackFile.txt"
+
+sLap, kt = createTrack(trackFile, 3000)
+
+
+#%% Load Car
+
 setupFile = open("setupFiles/SetupFile.json")
 
 data = json.load( setupFile ) # Hooray, we have parameters
@@ -53,18 +64,6 @@ for i in range(len(rGearRatio)):
 
 MWheelMax = np.amax(MWheelOut, axis=1)
 MWheelMax_interp = interp.interp1d(vWheel_range, MWheelMax)
-
-#%%
-
-trackFile = "trackFiles/TrackFile.txt"
-
-track = np.loadtxt(trackFile)
-
-sLap = np.linspace(track[0,0], track[-1,0], 3000)
-
-kt = interp.interp1d(track[:,0], track[:,1])
-
-kt   = np.maximum(kt(sLap), 0.00001)
 
 # Calculate Limit Speed and Find Apexes
 
