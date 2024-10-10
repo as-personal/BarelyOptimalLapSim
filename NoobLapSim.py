@@ -24,6 +24,7 @@ nEngine = np.array(data["EngRpm"])
 MEngine = np.array(data["EngNm"]) * data["reff"]
 rGearRatio = np.array(data["rGearRat"])
 radWheel = data["rtyre"]
+Cx = data["cx"]
 
 vMax = 300/3.6
 g = 9.81
@@ -81,7 +82,7 @@ for i in range(index_min, len(sLap)-1):
     
     MWheel_delivered = MWheelMax_interp(vCar_forward[i])
     FWheel_delivered = MWheel_delivered / radWheel
-    delivered_ax = FWheel_delivered / mCar
+    delivered_ax = (FWheel_delivered - 0.5*1.225*Cx*vCar_forward[i]**2)/ mCar
     
     accy = ( np.square(vCar_forward[i]) * kt[i] ) 
     max_ay = muy * g
@@ -99,7 +100,7 @@ vCar_forward[0] = vCar_forward[-1]
 for i in range(0, index_min):
     MWheel_delivered = MWheelMax_interp(vCar_forward[i])
     FWheel_delivered = MWheel_delivered / radWheel
-    delivered_ax = FWheel_delivered / mCar
+    delivered_ax = (FWheel_delivered - 0.5*1.225*Cx*vCar_forward[i]**2)/ mCar
     
     accy = ( np.square(vCar_forward[i]) * kt[i] ) 
     max_ay = muy * g
