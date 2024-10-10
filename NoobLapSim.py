@@ -6,12 +6,12 @@ Created on Mon Oct  7 20:31:54 2024
 Man is trying something stupid and silly, but why even do anything else?
 """
 import os
-import json
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as interp
 
 from setup.createTrack import createTrack
+from setup.createCar import createCar
 
 os.chdir('C:/Users/admin/Desktop/GitHub/BarelyOptimalLapSim')
 
@@ -24,9 +24,8 @@ sLap, kt = createTrack(trackFile, 3000)
 
 #%% Load Car
 
-setupFile = open("setupFiles/SetupFile.json")
-
-data = json.load( setupFile ) # Hooray, we have parameters
+setupFile = "setupFiles/SetupFile.json"
+data = createCar(setupFile)
 
 mCar = data["mcar"]
 muy  = data["gripy"]
