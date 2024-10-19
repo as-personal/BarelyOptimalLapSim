@@ -5,15 +5,16 @@ Created on Mon Oct  7 20:31:54 2024
 @author: Ananth
 Man is trying something stupid and silly, but why even do anything else?
 """
+
 import os
+os.chdir('C:/Users/admin/Desktop/GitHub/BarelyOptimalLapSim')
+
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.interpolate as interp
 
 from setup.createTrack import createTrack
 from setup.createCar import createCar
-
-os.chdir('C:/Users/admin/Desktop/GitHub/BarelyOptimalLapSim')
 
 #%% Load Track
 
